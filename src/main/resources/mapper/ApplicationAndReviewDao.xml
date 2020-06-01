@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkt.students_project_spring_boot.dao.ApplicationAndReviewDao">
+    <resultMap id="score" type="com.xkt.students_project_spring_boot.domain.Score">
+        <result column="score_id" jdbcType="INTEGER" property="scoreId"></result>
+        <result column="score_date" jdbcType="DATE" property="scoreDate"></result>
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"></result>
+        <result column="class_id" jdbcType="INTEGER" property="classId"></result>
+        <result column="grade" jdbcType="VARCHAR" property="grade"></result>
+        <result column="score" jdbcType="DOUBLE" property="score"></result>
+        <result column="score_name" jdbcType="VARCHAR" property="scoreName"></result>
+        <result column="stu_name" jdbcType="VARCHAR" property="stuName"></result>
+
+    </resultMap>
+    <resultMap id="student" type="com.xkt.students_project_spring_boot.domain.Student">
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="class_id" jdbcType="INTEGER" property="classId"/>
+        <result column="grade" jdbcType="VARCHAR" property="grade"/>
+        <result column="dorm_id" jdbcType="INTEGER" property="dormId"/>
+        <result column="single_parent" jdbcType="INTEGER" property="singleParent"/>
+        <result column="subsidy" jdbcType="INTEGER" property="subsidy"/>
+        <result column="patriarch_id" jdbcType="INTEGER" property="patriarchId"/>
+        <result column="stu_name" jdbcType="VARCHAR" property="stuName"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+    </resultMap>
+    <resultMap id="applicationLeave" type="com.xkt.students_project_spring_boot.domain.ApplicationLeave">
+        <result column="al_id" jdbcType="INTEGER" property="alId"></result>
+        <result column="application_date" jdbcType="DATE" property="applicationDate"></result>
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"></result>
+        <result column="application_id" jdbcType="INTEGER" property="applicationId"></result>
+        <result column="stu_name" jdbcType="VARCHAR" property="stuName"></result>
+        <result column="reason" jdbcType="VARCHAR" property="reason"></result>
+        <result column="days" jdbcType="INTEGER" property="days"></result>
+        <result column="ruin_date" jdbcType="DATE" property="ruinDate"></result>
+        <result column="one_review_date" jdbcType="DATE" property="oneReviewDate"></result>
+        <result column="one_review_reason" jdbcType="VARCHAR" property="oneReviewReason"></result>
+        <result column="one_review_id" jdbcType="INTEGER" property="oneReviewId"></result>
+        <result column="state" jdbcType="VARCHAR" property="state"></result>
+        <result column="two_review_date" jdbcType="DATE" property="twoReviewDate"></result>
+        <result column="two_review_reason" jdbcType="VARCHAR" property="twoReviewReason"></result>
+        <result column="two_review_id" jdbcType="INTEGER" property="twoReviewId"></result>
+        <result column="three_review_date" jdbcType="DATE" property="threeReviewDate"></result>
+        <result column="three_review_reason" jdbcType="VARCHAR" property="threeReviewReason"></result>
+        <result column="three_review_id" jdbcType="INTEGER" property="threeReviewId"></result>
+    </resultMap>
+    <resultMap id="applicationDorm" type="com.xkt.students_project_spring_boot.domain.ApplicationDorm">
+        <result column="la_id" jdbcType="INTEGER" property="laId"></result>
+        <result column="apply_for_date" jdbcType="DATE" property="applyForDate"></result>
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"></result>
+        <result column="applicat_id" jdbcType="INTEGER" property="applicatId"></result>
+        <result column="stu_name" jdbcType="VARCHAR" property="stuName"></result>
+        <result column="reason" jdbcType="VARCHAR" property="reason"></result>
+        <result column="now_dorm_id" jdbcType="INTEGER" property="nowDormId"></result>
+        <result column="state" jdbcType="VARCHAR" property="state"></result>
+        <result column="want_dorm_id" jdbcType="INTEGER" property="wantDormId"></result>
+        <result column="review_date" jdbcType="DATE" property="reviewDate"></result>
+        <result column="review_reason" jdbcType="VARCHAR" property="ReviewReason"></result>
+        <result column="review_id" jdbcType="INTEGER" property="reviewId"></result>
+        <result column="stu_name" jdbcType="VARCHAR" property="stuName"></result>
+
+    </resultMap>
+    <resultMap id="applicationClass" type="com.xkt.students_project_spring_boot.domain.ApplicationClass">
+        <result column="ca_id" jdbcType="INTEGER" property="caId"></result>
+        <result column="applicant_date" jdbcType="DATE" property="applicantDate"></result>
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"></result>
+        <result column="applicant_id" jdbcType="INTEGER" property="applicatId"></result>
+        <result column="stu_name" jdbcType="VARCHAR" property="stuName"></result>
+        <result column="reason" jdbcType="VARCHAR" property="reason"></result>
+        <result column="now_class_id" jdbcType="INTEGER" property="nowClassId"></result>
+        <result column="state" jdbcType="VARCHAR" property="state"></result>
+        <result column="want_class_id" jdbcType="INTEGER" property="wantClassId"></result>
+        <result column="review_date" jdbcType="DATE" property="reviewDate"></result>
+        <result column="review_reason" jdbcType="VARCHAR" property="reviewReason"></result>
+        <result column="review_id" jdbcType="INTEGER" property="reviewId"></result>
+    </resultMap>
+    <resultMap id="quan" type="com.xkt.students_project_spring_boot.domain.Quantification">
+        <result column="quan_id" jdbcType="INTEGER" property="quanId"></result>
+        <result column="quan_date" jdbcType="DATE" property="quanDate"></result>
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"></result>
+        <result column="score" jdbcType="DOUBLE" property="score"></result>
+        <result column="reason" jdbcType="VARCHAR" property="reason"></result>
+        <result column="tea_id" jdbcType="INTEGER" property="teaId"></result>
+        <result column="state" jdbcType="VARCHAR" property="state"></result>
+        <result column="stu_name" jdbcType="VARCHAR" property="stuName"></result>
+
+    </resultMap>
+    <resultMap id="poor" type="com.xkt.students_project_spring_boot.domain.Poor">
+        <result column="poor_id" jdbcType="INTEGER" property="poorId"></result>
+        <result column="apply_for_date" jdbcType="DATE" property="applyForDate"></result>
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"></result>
+        <result column="stu_name" jdbcType="VARCHAR" property="stuName"></result>
+        <result column="reason" jdbcType="VARCHAR" property="reason"></result>
+        <result column="tea_id" jdbcType="INTEGER" property="teaId"></result>
+        <result column="state" jdbcType="VARCHAR" property="state"></result>
+        <result column="review_date" jdbcType="DATE" property="reviewDate"></result>
+        <result column="review_reason" jdbcType="VARCHAR" property="reviewReason"></result>
+        <result column="subsidy" jdbcType="INTEGER" property="subsidy"></result>
+        <result column="single_parent" jdbcType="INTEGER" property="singleParent"></result>
+    </resultMap>
+    <resultMap id="scholarship" type="com.xkt.students_project_spring_boot.domain.Scholarship">
+        <result column="scholarship_id" jdbcType="INTEGER" property="scholarshipId"></result>
+        <result column="apply_for_date" jdbcType="DATE" property="applyForDate"></result>
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"></result>
+        <result column="stu_name" jdbcType="VARCHAR" property="stuName"></result>
+        <result column="reason" jdbcType="VARCHAR" property="reason"></result>
+        <result column="tea_id" jdbcType="INTEGER" property="teaId"></result>
+        <result column="state" jdbcType="VARCHAR" property="state"></result>
+        <result column="review_date" jdbcType="DATE" property="reviewDate"></result>
+        <result column="review_reason" jdbcType="VARCHAR" property="reviewReason"></result>
+        <result column="scope_type" jdbcType="VARCHAR" property="scopeType"></result>
+    </resultMap>
+<!--    查询学生所有成绩-->
+    <select id="studentScores" resultMap="score">
+        select *  from score where stu_id =#{stu_id}
+    </select>
+    <!--    按照时间考试成绩-->
+    <select id="studentTimeScore" resultMap="score">
+        select *  from score where stu_id = #{stuId} and DATE_FORMAT(score_date,'%Y-%m-%d') = #{scoreDate} and score_name = #{scoreName}
+    </select>
+    <!--    按照时间段考试成绩-->
+    <select id="studentTimesScore" resultMap="score">
+        select *  from score where stu_id = #{stuId}
+        and DATE_FORMAT(score_date,'%Y-%m-%d') between  #{scoreDate} and #{scoreDate1}and score_name = #{scoreName}
+    </select>
+    <!--    查询一个班所有成绩-->
+    <select id="classScore" resultMap="score">
+        select *  from score where class_id = #{class_id}
+    </select>
+    <!--    按照时间考试班级成绩-->
+    <select id="classTimeScore" resultMap="score">
+        select *  from score where class_id = #{class_id} and DATE_FORMAT(score_date,'%Y-%m-%d') = #{scoreDate} and score_name = #{scoreName}
+    </select>
+    <!--    按照时间考试成绩-->
+    <select id="classTimesScore" resultMap="score">
+        select *  from score where class_id = #{class_id}
+        and DATE_FORMAT(score_date,'%Y-%m-%d') between  #{scoreDate} and #{scoreDate1}and score_name = #{scoreName}
+    </select>
+    <!--    班级单科总成绩成绩对比；按照时间考试班级成绩-->
+    <select id="classContrastScore" resultMap="score">
+        select *  from score where DATE_FORMAT(score_date,'%Y-%m-%d') = #{scoreDate}and score_name = #{scoreName}
+    </select>
+<!--    申请请假-->
+    <insert id="addApplicatLeave" parameterType="com.xkt.students_project_spring_boot.domain.ApplicationLeave">
+        insert into application_leave(reason,application_id,application_date,days,state,stu_id,stu_name,one_review_id,two_review_id,three_review_id)
+        values (#{reason},#{applicationId},#{applicationDate},#{days},#{state},#{stuId},#{stuName},#{oneReviewId},#{twoReviewId},#{threeReviewId})
+    </insert>
+
+    <!--    家长请假状态-->
+    <select id="selectApplicationLeave" resultMap="applicationLeave">
+        select *  from application_leave where application_id = #{applicatId}
+    </select>
+    <!--    学生请假状态-->
+    <select id="selectApplicationLeave1" resultMap="applicationLeave">
+        select *  from application_leave where stu_id = #{stuId}
+    </select>
+
+    <!--    申请换班-->
+    <insert id="addApplicatClass" parameterType="com.xkt.students_project_spring_boot.domain.ApplicationClass">
+        insert into class_application(reason,applicant_id,applicant_date,stu_id,state,now_class_id,want_class_id,stu_name,review_id)
+        values (#{reason},#{applicatId},#{applicantDate},#{stuId},#{state},#{nowClassId},#{wantClassId},#{stuName},#{reviewId})
+    </insert>
+
+    <!--    家长换班状态-->
+    <select id="selectApplicationClass" resultMap="applicationClass">
+        select *  from class_application where applicant_id = #{applicantId}
+    </select>
+    <!--    学生换班状态-->
+    <select id="selectApplicationClass1" resultMap="applicationClass">
+        select *  from class_application where stu_id = #{stuId}
+    </select>
+
+    <!--    申请换宿-->
+    <insert id="addApplicatDorm" parameterType="com.xkt.students_project_spring_boot.domain.ApplicationDorm">
+        insert into lodge_application(reason,applicant_id,apply_for_date,stu_id,state,now_dorm_id,want_dorm_id,stu_name,review_id)
+        values (#{reason},#{applicatId},#{applyForDate},#{stuId},#{state},#{nowDormId},#{wantDormId},#{stuName},#{reviewId})
+    </insert>
+
+    <!--    家长换宿状态-->
+    <select id="selectApplicationDorm" resultMap="applicationDorm">
+        select *  from lodge_application where applicant_id = #{applicantId}
+    </select>
+    <!--    学生换宿状态-->
+    <select id="selectApplicationDorm1" resultMap="applicationDorm">
+        select *  from lodge_application where stu_id = #{stuId}
+    </select>
+
+    <!--    查询学生所有量化-->
+    <select id="selectQuans" resultMap="quan">
+        select *  from quan
+    </select>
+    <!--    按照时间段查询学生所有量化-->
+    <select id="selectTimeQuans" resultMap="quan">
+        select *  from quan where stu_id = #{stuId}
+                and DATE_FORMAT(quan_date,'%Y-%m-%d') between  #{quanDate} and #{quanDate1}
+
+    </select>
+    <!--    申请贫困生-->
+    <insert id="addPoor" parameterType="com.xkt.students_project_spring_boot.domain.Poor">
+        insert into poor(poor_id,reason,apply_for_date,stu_id,state,subsidy,single_parent,stu_name,tea_id)
+        values (#{poorId},#{reason},#{applyForDate},#{stuId},#{state},#{subsidy},#{singleParent},#{stuName},#{teaId})
+    </insert>
+
+    <!--    查看学生量化-->
+    <select id="selectPoor" resultMap="poor">
+        select *  from poor where stu_id = #{stuId}
+    </select>
+    <!--    申请奖学金-->
+    <insert id="addScholarship" parameterType="com.xkt.students_project_spring_boot.domain.Scholarship">
+        insert into scholarship(scholarship_id,reason,scope_type,apply_for_date,stu_id,state,stu_name,tea_id)
+        values (#{scholarshipId},#{reason},#{scopeType},#{applyForDate},#{stuId},#{state}#{stuName},#{teaId})
+    </insert>
+    <!--    学生申请奖学金状态-->
+    <select id="selectScholarship" resultMap="scholarship">
+        select *  from scholarship where stu_id = #{stuId}
+    </select>
+    <!--    修改学生信息-->
+    <update id="updateStudent">
+        update student set stu_name = #{stuName},sex = #{sex},subsidy= #{subsidy},
+        single_parent = #{singleParent},password = #{password}
+        where stu_id = #{stuId}
+    </update>
+    <!--    修改家长信息-->
+    <update id="updatePatriarch">
+        update patriarch set pat_name = #{patName},sex = #{sex},
+        cell_phone_number = #{cellPhoneNumber},password = #{password}
+        where pat_id = #{patId}
+    </update>
+    <!--    修改教师信息-->
+    <update id="updateTeacher">
+        update teacher set teacher_name = #{teacherName},password = #{password}
+        where teacher_id = #{teacherId}
+    </update>
+    <!--    审核学生申请奖学金状态-->
+    <select id="teacherScholarship" resultMap="scholarship">
+        select *  from scholarship where tea_id = #{teaId} and state = '0'
+    </select>
+    <!--    审核学生申请贫困生状态-->
+    <select id="teacherPoor" resultMap="poor">
+        select *  from poor where tea_id = #{teaId} and state = '0'
+    </select>
+    <!--    审核学生申请换班生状态-->
+    <select id="teacherApplicationClass" resultMap="applicationClass">
+        select *  from class_application where review_id = #{reviewId} and state = '0'
+    </select>
+    <!--    审核学生申请换宿状态-->
+    <select id="teacherApplicationDorm3" resultMap="applicationDorm">
+        select *  from lodge_application where review_id = #{reviewId} and state = '0'
+    </select>
+    <!--    一审审核学生申请请假状态-->
+    <select id="teacherOneApplicationLeave" resultMap="applicationLeave">
+        select *  from application_leave where one_review_id = #{oneReviewId} and state = '0'
+    </select>
+    <!--    二审审核学生申请请假状态-->
+    <select id="teacherTwoApplicationLeave" resultMap="applicationLeave">
+        select *  from application_leave where two_review_id = #{twoReviewId} and state = '1' and two_review_reason = ''
+    </select>
+    <!--    三审审核学生申请请假状态-->
+    <select id="teacherThreeApplicationDorm" resultMap="applicationLeave">
+        select *  from application_leave where three_review_id = #{threeReviewId} and state = '2' and three_review_reason = ''
+    </select>
+
+
+    <!--    以审核学生申请奖学金状态-->
+    <select id="teacherScholarship6" resultMap="scholarship">
+        select *  from scholarship where tea_id = #{teaId} and state != '0'
+    </select>
+    <!--    以审核学生申请贫困生状态-->
+    <select id="teacherPoor6" resultMap="poor">
+        select *  from poor where tea_id = #{teaId} and state != '0'
+    </select>
+    <!--    以审核学生申请换班生状态-->
+    <select id="teacherApplicationClass6" resultMap="applicationClass">
+        select *  from class_application where review_id = #{reviewId} and state != '0'
+    </select>
+    <!--    已审核学生申请换宿状态-->
+    <select id="teacherApplicationDorm6" resultMap="applicationDorm">
+        select *  from lodge_application where review_id = #{reviewId} and state != '0'
+    </select>
+    <!--    已一审审核学生申请请假状态-->
+    <select id="teacherOneApplicationLeave6" resultMap="applicationLeave">
+        select *  from application_leave where one_review_id = #{oneReviewId} and state != '0'
+    </select>
+    <!--    已二审审核学生申请请假状态-->
+    <select id="teacherTwoApplicationLeave6" resultMap="applicationLeave">
+        select *  from application_leave where two_review_id = #{twoReviewId} and state != '0' and two_review_reason is not null AND two_review_reason != ''
+    </select>
+    <!--    已三审审核学生申请请假状态-->
+    <select id="teacherThreeApplicationDorm6" resultMap="applicationLeave">
+        select *  from application_leave where three_review_id = #{threeReviewId} and state != '0' and three_review_reason is not null AND three_review_reason != ''
+    </select>
+<!--    审核奖学金-->
+    <update id="updateScholarship6">
+        update scholarship set review_reason = #{reviewReason},state = #{state},
+        review_date = #{reviewDate}
+        where scholarship_id = #{scholarshipId}
+    </update>
+    <!--    审核贫困生-->
+    <update id="updatePoor">
+        update poor set review_reason = #{reviewReason},state = #{state},
+        review_date = #{reviewDate}
+        where poor_id = #{poorId}
+    </update>
+    <!--    审核换班-->
+    <update id="updateApplicationClass">
+        update class_application set review_reason = #{reviewReason},state = #{state},
+        review_date = #{reviewDate}
+        where ca_id = #{caId}
+    </update>
+    <!--    审核换宿-->
+    <update id="updateApplicationDorm">
+        update lodge_application set review_reason = #{reviewReason},state = #{state},
+        review_date = #{reviewDate}
+        where la_id = #{laId}
+    </update>
+    <!--    一审审核请假-->
+    <update id="updateOneApplicationLeave">
+        update application_leave set one_review_reason = #{oneReviewReason},state = #{state},
+        one_review_date = #{oneReviewDate}
+        where al_id = #{alId}
+    </update>
+    <!--    二审审核请假-->
+    <update id="updateTwoApplicationLeave">
+        update application_leave set two_review_reason = #{twoReviewReason},state = #{state},
+        two_review_date = #{twoReviewDate}
+        where al_id = #{alId}
+    </update>
+<!--    三审审核-->
+    <update id="updateThreeApplicationLeave">
+        update application_leave set three_review_reason = #{threeReviewReason},state = #{state},
+        three_review_date = #{threeReviewDate}
+        where al_id = #{alId}
+    </update>
+    <!--    添加成绩-->
+    <insert id="addexcelScore" parameterType="com.xkt.students_project_spring_boot.domain.Score">
+        insert into score(stu_id,stu_name,class_id,grade,score,
+                            score_date)
+        values (#{stuId},#{stuName},#{classId},#{grade},#{score},
+                #{scoreDate})
+    </insert>
+<!--    查看班级成绩-->
+    <select id="selectClassScore" resultMap="score">
+        select *  from score
+    </select>
+<!--    班级成绩对比-->
+    <select id="selectClasssScore" resultMap="score">
+        select *  from score where  score_date = #{scoreDate} and grade = #{grade}
+    </select>
+    <!--批量删除成绩-->
+    <delete id="deleteScores">
+        <!-- select * from user where id in (1,2,3,4,5); -->
+        delete from score where score_id in
+
+        <foreach collection="array" open="( " close=")" item="score_id"  separator=",">
+            #{scoreId}
+        </foreach>
+
+    </delete>
+    <!--    删除成绩-->
+    <delete id="deleteScore">
+     delete from score where score_id = #{scoreId}
+    </delete>
+    <!--    添加量化-->
+    <insert id="addexcelQuan" parameterType="com.xkt.students_project_spring_boot.domain.Quantification">
+        insert into score(stu_id,stu_name,class_id,grade,score,
+                            score_date)
+        values (#{stuId},#{stuName},#{classId},#{grade},#{score},
+                #{scoreDate})
+    </insert>
+    <!--    查看所有量化-->
+    <select id="selectsQuan" resultMap="quan">
+        select *  from score
+    </select>
+    <!--    个人量化查询-->
+    <select id="selectStudentQuan" resultMap="quan">
+        select *  from score where stu_id = #{stuId}
+    </select>
+    <!--批量删除成绩-->
+    <delete id="deleteQuans">
+        <!-- select * from user where id in (1,2,3,4,5); -->
+        delete from score where score_id in
+
+        <foreach collection="array" open="( " close=")" item="score_id"  separator=",">
+            #{scoreId}
+        </foreach>
+
+    </delete>
+    <!--    删除成绩-->
+    <delete id="deleteQuan">
+     delete from score where score_id = #{scoreId}
+    </delete>
+
+    <!--    查看所有学生信息-->
+    <select id="findStudentBystuId" resultMap="student">
+    select *  from student where login_autority = 2 and stu_id = #{stuId}
+    </select>
+    <!--    查看换宿申请-->
+    <select id="findapplicationClassByad" resultMap="applicationDorm">
+    select *  from lodge_application where la_id = #{laId}
+    </select>
+    <!--    查看所有换班信息-->
+    <select id="findClassApplicationBycaId" resultMap="applicationClass">
+    select *  from class_application where ca_id = #{caId}
+    </select>
+<!--修改学生信息-->
+    <update id="updateStudent6">
+        update student set class_id = #{classId},dorm_id = #{dormId}
+        where stu_id = #{stuId}
+    </update>
+</mapper>

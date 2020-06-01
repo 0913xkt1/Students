@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkt.students_project_spring_boot.dao.PatriarchDao">
+    <resultMap type="com.xkt.students_project_spring_boot.domain.Patriarch" id="patriarch">
+        <result column="pat_id" jdbcType="INTEGER" property="patId"/>
+        <result column="login_autority" jdbcType="INTEGER" property="loginAutority"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="cellPhoneNumber" jdbcType="VARCHAR" property="cell_phone_number"/>
+        <result column="autority" jdbcType="INTEGER" property="autority"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="pat_name" jdbcType="VARCHAR" property="patName"/>
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"/>
+    </resultMap>
+
+
+    <!--    家长登录-->
+    <select id="findByIdAndByPassword" resultMap="patriarch">
+        select *  from patriarch where pat_id = #{patId} and password = #{password} and login_autority = 4
+    </select>
+<!--修改个人信息-->
+    <update id="updatePatriarch">
+        update patriarch set password = #{password},pat_name = #{patName},sex = #{sex}, cell_phone_number = #{cellPhoneNumber},
+        stu_id = #{stuId}
+        where pat_id = #{patId}
+    </update>
+</mapper>

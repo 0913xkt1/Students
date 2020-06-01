@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkt.students_project_spring_boot.dao.StudentDao">
+    <resultMap type="com.xkt.students_project_spring_boot.domain.Student" id="student">
+        <result column="stu_id" jdbcType="INTEGER" property="stuId"/>
+        <result column="login_autority" jdbcType="INTEGER" property="loginAutority"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="class_id" jdbcType="INTEGER" property="classId"/>
+        <result column="grade" jdbcType="VARCHAR" property="grade"/>
+        <result column="dorm_id" jdbcType="INTEGER" property="dormId"/>
+        <result column="single_parent" jdbcType="INTEGER" property="singleParent"/>
+        <result column="subsidy" jdbcType="INTEGER" property="subsidy"/>
+        <result column="stuName" jdbcType="VARCHAR" property="stu_name"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+    </resultMap>
+    <!--    学生登录-->
+    <select id="findByIdAndByPassword" resultMap="student">
+        select *  from student where stu_id = #{stuId} and password = #{password} and login_autority =2
+    </select>
+    <!--修改个人信息-->
+    <update id="updateStudent">
+        update patriarch set password = #{password},single_parent=#{singleParent},subsidy=#{subsidy},stu_name = #{stuName},sex = #{sex},patriarch_id=#{patriarchId}
+        where stu_id = #{stuId}
+    </update>
+</mapper>
